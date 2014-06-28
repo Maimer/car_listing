@@ -2,10 +2,11 @@
 
 FactoryGirl.define do
   factory :car do
-    color "MyString"
-    year 1
-    mileage 1
-    description "MyText"
-    manufacturer_id 1
+    sequence(:color) { "#{Faker::Commerce.color}" }
+    sequence(:year) { "#{rand(95) + 1920}" }
+    sequence(:mileage) { "#{rand(100000)}" }
+    sequence(:description) { "#{Faker::Lorem.paragraph(2)}" }
+
+    manufacturer
   end
 end
