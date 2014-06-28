@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :manufacturer do
-    name "MyString"
-    country "MyString"
+    sequence(:name) { |n| "Manufacturer #{n}"}
+    sequence(:country) { |n| "Country #{rand(5)+1}"}
   end
 end
