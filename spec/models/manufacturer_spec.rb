@@ -21,6 +21,6 @@ RSpec.describe Manufacturer, :type => :model do
     expect{ FactoryGirl.create(:manufacturer, name: 'Ford', country: 'Not USA') }
       .to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Name has already been taken')
 
-    expect(Manufacturer.all.count).to eq 1
+    expect(Manufacturer.all.count).to eq(1)
   end
 end

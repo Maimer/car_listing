@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :manufacturer do
-    sequence(:name) { |n| "Manufacturer #{n}"}
-    sequence(:country) { |n| "#{Faker::Address.country}" }
+    sequence(:name) { |n| "Manufacturer #{n}" }
+    sequence(:country) { "#{Faker::Address.country}" }
   end
 end
