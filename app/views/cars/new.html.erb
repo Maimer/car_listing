@@ -1,7 +1,7 @@
 <h1>Add a New Car</h1>
 
 <%= simple_form_for([@manufacturer, @car]) do |f| %>
-  <%= f.input :color %>
+  <%= f.input :color, :input_html => { size: 20 } %>
   <%= f.input :mileage %>
   <%= f.input :year %>
   <%= f.input :description %>
