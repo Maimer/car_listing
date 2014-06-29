@@ -9,12 +9,12 @@ RSpec.describe CarsController, :type => :controller do
   describe "GET #new" do
     it "assigns a new car to @car" do
       car = Car.new
-      get :new, manufacturer_id: :id
+      get :new, manufacturer_id: @manufacturer
       expect(assigns(:car).attributes).to eq(car.attributes)
     end
     it "renders the :new template" do
       car = Car.new
-      get :new, manufacturer_id: :id
+      get :new, manufacturer_id: @manufacturer
       expect(response).to render_template :new
     end
   end

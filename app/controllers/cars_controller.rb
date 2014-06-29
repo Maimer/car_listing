@@ -2,6 +2,7 @@ class CarsController < ApplicationController
 
   def new
     @car = Car.new
+    @manufacturer = Manufacturer.find(params[:manufacturer_id])
   end
 
   def create

@@ -1,0 +1,7 @@
+<h1>Add a New Manufacturer</h1>
+
+<%= simple_form_for(@manufacturer) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :country %>
+  <%= f.button :submit, value: 'Create Manufacturer' %>
+<% end %>

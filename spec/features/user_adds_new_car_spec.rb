@@ -8,7 +8,8 @@ feature 'user adds a new car', %Q{
 
   before(:each) do
     @car = FactoryGirl.build(:car)
-    visit new_manufacturer_car_path(@car.manufacturer)
+    visit manufacturer_path(@car.manufacturer)
+    click_on 'Add a new Car'
   end
 
   scenario "user adds a new car" do
@@ -20,7 +21,7 @@ feature 'user adds a new car', %Q{
 
     expect(page).to have_content(@car.id, @car.color, @car.mileage, @car.year, @car.description)
     expect(page).to have_content(@car.manufacturer.name, @car.manufacturer.country)
-    expect(page).to have_link("Add a New Car", new_manufacturer_car_path(@manufacturer))
+    expect(page).to have_link("Add a new Car", new_manufacturer_car_path(@car.manufacturer))
   end
 
   scenario "user leaves color blank" do
@@ -58,7 +59,7 @@ feature 'user adds a new car', %Q{
 
     expect(page).to have_content(@car.id, @car.color, @car.mileage, @car.year, @car.description)
     expect(page).to have_content(@car.manufacturer.name, @car.manufacturer.country)
-    expect(page).to have_link("Add a New Car", new_manufacturer_car_path(@manufacturer))
+    expect(page).to have_link("Add a new Car", new_manufacturer_car_path(@car.manufacturer))
   end
 
   scenario "user enters a year that is too low" do

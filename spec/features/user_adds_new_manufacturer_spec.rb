@@ -7,22 +7,22 @@ feature 'user adds a new manufacturer', %Q{
 } do
 
   before(:each) do
-    @manufacturer = FactoryGirl.build(:manufacturer)
     visit new_manufacturer_path
+    @manufacturer = FactoryGirl.build(:manufacturer)
   end
 
   scenario 'user adds a new manufacturer' do
     fill_in 'Name', with: @manufacturer.name
-    fill_in 'Country', with: @manufacturer.country
+    select @manufacturer.country, from: 'Country'
     click_on 'Create Manufacturer'
 
     expect(page).to have_content @manufacturer.name
     expect(page).to have_content @manufacturer.country
-    expect(page).to have_link("Add a New Car", new_manufacturer_car_path(@manufacturer))
+    expect(page).to have_content "Add a new Car"
   end
 
   scenario 'user leaves manufacturer name blank' do
-    fill_in 'Country', with: @manufacturer.country
+    select @manufacturer.country, from: 'Country'
     click_on 'Create Manufacturer'
 
     expect(page).to have_content "Your Manufacturer was not succesfully submitted."
@@ -38,7 +38,7 @@ feature 'user adds a new manufacturer', %Q{
   scenario 'user adds a manufacturer with a duplicate name' do
     @manufacturer.save
     fill_in 'Name', with: @manufacturer.name
-    fill_in 'Country', with: @manufacturer.country
+    select @manufacturer.country, from: 'Country'
     click_on 'Create Manufacturer'
 
     expect(page).to have_content "Your Manufacturer was not succesfully submitted."
