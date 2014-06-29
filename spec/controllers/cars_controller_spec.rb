@@ -49,7 +49,11 @@ RSpec.describe CarsController, :type => :controller do
           .to_not change(Car, :count)
       end
       it "does not save the new car in the database with too high a year" do
-        expect{ post :create, manufacturer_id: @manufacturer, car: FactoryGirl.build(:car, year: 2016).attributes }
+        expect{ post :create, manufacturer_id: @manufacturer, car: FactoryGirl.build(:car, year: Time.now.year + 2).attributes }
+          .to_not change(Car, :count)
+      end
+      it "does not save the new car in the database with a negative mileage" do
+        expect{ post :create, manufacturer_id: @manufacturer, car: FactoryGirl.build(:car, mileage: -1).attributes }
           .to_not change(Car, :count)
       end
       it "re-renders the :new template" do

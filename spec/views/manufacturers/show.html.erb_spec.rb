@@ -24,7 +24,7 @@ RSpec.describe "manufacturers/show", :type => :view do
     render
 
     expect(rendered).to have_content(@car1.id, @car1.color, @car1.mileage, @car1.year, @car1.description)
-    # expect(rendered).to have_content
+    expect(rendered).to have_content(@car2.id, @car2.color, @car2.mileage, @car2.year, @car2.description)
   end
 
   it "contains a link to view all manufacturers" do

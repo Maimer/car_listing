@@ -22,8 +22,12 @@ RSpec.describe Car, :type => :model do
     expect(FactoryGirl.build(:car, description: nil)).to be_valid
   end
 
+  it "is invalid with a mileage below 0" do
+    expect(FactoryGirl.build(:car, mileage: -1)).to_not be_valid
+  end
+
   it "is invalid with a year lower than 1920 or higher than #{Time.now.year + 1}" do
     expect(FactoryGirl.build(:car, year: 1919)).to_not be_valid
-    expect(FactoryGirl.build(:car, year: 2016)).to_not be_valid
+    expect(FactoryGirl.build(:car, year: Time.now.year + 2)).to_not be_valid
   end
 end
