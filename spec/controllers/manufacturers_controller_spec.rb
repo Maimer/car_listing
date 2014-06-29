@@ -48,7 +48,7 @@ RSpec.describe ManufacturersController, :type => :controller do
         expect{ post :create, manufacturer: FactoryGirl.build(:manufacturer).attributes }
           .to change(Manufacturer, :count).by(1)
       end
-      it "redirects to the home page" do
+      it "redirects to the manufacturer page" do
         post :create, manufacturer: FactoryGirl.build(:manufacturer).attributes
         expect(response).to redirect_to Manufacturer.last
       end
