@@ -34,4 +34,13 @@ feature 'user adds a new manufacturer', %Q{
 
     expect(page).to have_content "Your Manufacturer was not succesfully submitted."
   end
+
+  scenario 'user adds a manufacturer with a duplicate name' do
+    @manufacturer.save
+    fill_in 'Name', with: @manufacturer.name
+    fill_in 'Country', with: @manufacturer.country
+    click_on 'Create Manufacturer'
+
+    expect(page).to have_content "Your Manufacturer was not succesfully submitted."
+  end
 end
