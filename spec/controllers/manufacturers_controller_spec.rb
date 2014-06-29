@@ -4,10 +4,10 @@ RSpec.describe ManufacturersController, :type => :controller do
 
   describe "GET #index" do
     it "assigns @manufacturers" do
-      manufacturer = FactoryGirl.create(:manufacturer)
+      manufacturer1 = FactoryGirl.create(:manufacturer)
       manufacturer2 = FactoryGirl.create(:manufacturer)
       get :index
-      expect(assigns(:manufacturers)).to eq([manufacturer, manufacturer2])
+      expect(assigns(:manufacturers)).to eq([manufacturer1, manufacturer2])
     end
 
     it "renders the index template" do
@@ -26,6 +26,17 @@ RSpec.describe ManufacturersController, :type => :controller do
       manufacturer = FactoryGirl.create(:manufacturer)
       get :show, id: FactoryGirl.create(:manufacturer)
       expect(response).to render_template :show
+    end
+    it "shows the cars associated with that manufacturer" do
+      manufacturer = FactoryGirl.create(:manufacturer)
+      car1 = FactoryGirl.build(:car)
+      car1.manufacturer_id = manufacturer.id
+      car1.save
+      car2 = FactoryGirl.build(:car)
+      car2.manufacturer_id = manufacturer.id
+      car2.save
+      get :show, id: manufacturer
+      expect(assigns(:cars)).to eq([car1, car2])
     end
   end
 
