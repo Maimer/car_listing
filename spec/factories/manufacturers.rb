@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :manufacturer do
     sequence(:name) { |n| "Manufacturer #{n}" }
-    sequence(:country) { "#{Faker::Address.country}" }
+    sequence(:country) { "#{Country.all[rand(Country.all.size)][0]}" }
   end
 end

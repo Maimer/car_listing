@@ -167,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
+  countries
   country_select
   factory_girl_rails
   faker

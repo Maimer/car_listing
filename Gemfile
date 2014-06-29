@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'simple_form'
+gem 'countries'
 gem 'country_select'
 
 group :development, :test do
