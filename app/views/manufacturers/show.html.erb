@@ -1,0 +1,32 @@
+<h2><%= @manufacturer.name %></h2>
+
+<h4><%= @manufacturer.country %></h4>
+
+<%= link_to "View All Manufacturers", manufacturers_path %> /
+
+<%= link_to "Add a new Car", new_manufacturer_car_path(@manufacturer) %>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>COLOR</td>
+      <td>YEAR</td>
+      <td>MILEAGE</td>
+      <td>DESCRIPTION</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.id %></td>
+        <td><%= car.color %></td>
+        <td><%= car.year %></td>
+        <td><%= car.mileage %></td>
+        <td><%= car.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
